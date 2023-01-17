@@ -12,7 +12,7 @@ dotenv.config();
   imports: [UserModule,
             ConfigModule.forRoot({isGlobal:true}),
             TypeOrmModule.forRoot({
-              type: 'postgres' ,
+              type: 'mysql' ,
               host: process.env.RDS_HOSTNAME ,
               port:parseInt(process.env.RDS_PORT) ,
               username: process.env.RDS_USERNAME,
