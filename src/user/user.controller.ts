@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from '@nestjs/common';
+import { UserRoleEnum } from 'src/enums/user.role.enum';
 import { addUserDto } from './dto/addUser.dto';
 import { LoginCredentialsDto } from './dto/loginCredentials.dto';
 import { SubscribeUserDto } from './dto/subscribe.user.dto';
@@ -21,21 +22,29 @@ export class UserController {
    return await this.userService.getAllUsers();    
  }
 
+ @Get('getListOfTailors/:role')
+ async getListOfTailors (@Param('role')role: UserRoleEnum): Promise<UserEntity[]>
+ { return await this.userService.getListOfTailors(role);}
+
  @Get('recover/:id')
+ @UseGuards(JwtAuthGuard)
  async restoreUser(@Param('id',ParseIntPipe)id:number)
  {return await this.userService.restoreUser(id);}
 
  @Post('/addUser')
+ @UseGuards(JwtAuthGuard)
 async addUser(@Body() user:addUserDto ) : Promise<UserEntity>
 {return await this.userService.addUser(user); 
 } 
 
 @Patch('/updateUser/:id')
+@UseGuards(JwtAuthGuard)
 async upateUser(@Param('id',ParseIntPipe)id , number ,@Body()user: UpdateUserDto):Promise<UserEntity>{
     return await this.userService.updateUser(id,user);
 }
 
 @Delete('deleteUser/:id')
+@UseGuards(JwtAuthGuard)
 async deleteUser(@Param('id',ParseIntPipe)id:number)
 {return await this.userService.softDeleteUser(id);}
 

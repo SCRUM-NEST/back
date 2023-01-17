@@ -8,6 +8,7 @@ import { UserEntity } from './entities/user.entity/user.entity';
 import * as bcrypt from 'bcrypt';
 import { LoginCredentialsDto } from './dto/loginCredentials.dto';
 import { JwtService } from '@nestjs/jwt/dist';
+import { UserRoleEnum } from 'src/enums/user.role.enum';
 
 @Injectable()
 export class UserService {
@@ -45,6 +46,15 @@ export class UserService {
     async restoreUser(id:number)
     {
      return await this.userRepository.restore(id); }
+
+
+
+    async getListOfTailors(role: UserRoleEnum):Promise<UserEntity[]>
+    {const tailors= await this.userRepository.createQueryBuilder("user")
+                                         .where("user.role= :role")
+                                         .setParameters({role})
+                                        .getMany();
+    return tailors;}
  
 
      async register(userData:SubscribeUserDto):Promise<Partial<UserEntity>>{
