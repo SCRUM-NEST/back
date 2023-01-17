@@ -1,8 +1,8 @@
-import { Controller, Post, Body , Get , Query, Put ,Delete, Patch } from '@nestjs/common';
-import { AddOrderDto } from 'src/dto/add-order.dto';
-import { UpdateOrderDto } from 'src/dto/update-order.dto';
+import { Controller, Post, Body , Get, Patch } from '@nestjs/common';
+import { AddOrderDto } from 'src/order/dto/add-order.dto';
+import { UpdateOrderDto } from 'src/order/dto/update-order.dto';
 import { OrderService } from './order.service';
-import { Order } from 'src/entities/order.entity';
+import { Order } from 'src/order/entities/order.entity';
 import { Param } from '@nestjs/common/decorators';
 
 

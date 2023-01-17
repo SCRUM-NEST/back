@@ -1,11 +1,11 @@
 import { Body } from '@nestjs/common';
-import { AddOrderDto } from 'src/dto/add-order.dto';
+import { AddOrderDto } from 'src/order/dto/add-order.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UpdateOrderDto } from 'src/dto/update-order.dto';
+import { UpdateOrderDto } from 'src/order/dto/update-order.dto';
 import { Injectable } from '@nestjs/common';
-import { Order } from 'src/entities/order.entity';
-import { Status } from 'src/enum/status.enum';
+import { Order } from 'src/order/entities/order.entity';
+import { Status } from 'src/enums/status.enum';
 
 @Injectable()
 export class OrderService {

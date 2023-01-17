@@ -1,8 +1,8 @@
-import { OneToMany, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Status } from 'src/enum/status.enum';
+ import { OneToMany, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Status } from 'src/enums/status.enum';
 
-@Entity('order')
-export class Order {
+@Entity()
+export class Order{
 
     @PrimaryGeneratedColumn()
     orderId: number;   
@@ -31,4 +31,4 @@ export class Order {
       default: Status.DEFAULT}
     )
     status: string
-  }
+  } 

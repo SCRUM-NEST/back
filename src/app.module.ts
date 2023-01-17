@@ -7,6 +7,7 @@ import * as dotenv from 'dotenv';
 import { UserEntity } from './user/entities/user.entity/user.entity';
 import { ConfigModule } from '@nestjs/config';
 import { OrderModule } from './order/order.module';
+import { Order } from './order/entities/order.entity';
 
 dotenv.config();
 @Module({
@@ -21,7 +22,7 @@ dotenv.config();
       username: process.env.RDS_USERNAME,
       password: process.env.RDS_PASSWORD,
       database: process.env.RDS_DB_NAME,
-      entities: [UserEntity],
+      entities: [UserEntity,Order],
       synchronize: true,
     }),
   ],

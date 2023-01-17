@@ -1,14 +1,14 @@
-import { Status } from 'src/enum/status.enum';
-import { IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min, IsEnum } from 'class-validator';
+import { Status } from 'src/enums/status.enum';
+import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class UpdateOrderDto {
+export class AddOrderDto {
 
-    @IsOptional()
+    @IsNotEmpty()
     @IsString()
     description: string 
 
-    @IsOptional()
+    @IsNotEmpty()
     @Type(()=>Number)
     @IsNumber()
     budget: string  
@@ -31,5 +31,5 @@ export class UpdateOrderDto {
 
     @IsOptional()
     @IsEnum(Status)
-    status: string 
+    status: Status
   }
