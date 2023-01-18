@@ -32,10 +32,17 @@ export class Order extends TimeStampEntities{
     )
     status: string
     
+   @ManyToOne(
+      type => UserEntity,
+      (user) =>user.orders
+    
+    )
+    users:UserEntity; 
+
     @ManyToOne(
       type => UserEntity,
       (user) =>user.orders
     
     )
-    users:UserEntity;
+    tailor:UserEntity; 
   } 

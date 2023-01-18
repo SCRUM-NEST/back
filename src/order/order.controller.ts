@@ -1,4 +1,4 @@
-import { Controller, Post, Body , Get, Patch } from '@nestjs/common';
+import { Controller, Post, Body , Get, Patch, ParseIntPipe } from '@nestjs/common';
 import { AddOrderDto } from 'src/order/dto/add-order.dto';
 import { UpdateOrderDto } from 'src/order/dto/update-order.dto';
 import { OrderService } from './order.service';
@@ -20,11 +20,15 @@ export class OrderController {
    return await this.orderService.submitOrder(addOrderDto);
   }
 
-  // liste des commandes
-  @Get() 
-  async viewOrder()// ( @User() user )
-   : Promise<Order[]>{
-     return await this.orderService.viewOrder(); //(user)
+  
+  @Get('ordersByuser/:id') 
+  async viewOrderByUsers(@Param('id',ParseIntPipe)id:number){
+     return await this.orderService.viewOrderByUsers(id);}
+  
+
+  @Get('ordersByTailors/:id') 
+    async viewOrderByTailors(@Param('id',ParseIntPipe)id:number){
+     return await this.orderService.viewOrderByTailors(id);
   }
 
 

@@ -13,17 +13,14 @@ export class UpdateOrderDto {
     @IsNumber()
     budget: string  
 
-    @IsOptional()
-    image: string //for now because it will be an image api
-
-    @IsOptional()
+     @IsOptional()
     @Type(()=>Number)
     @IsNumber()
     cost: string  
 
     @IsOptional()
     @IsString()
-    meeting_date: string // check if it's a date ?
+    meeting_date: string 
 
     @IsOptional()
     @IsString()

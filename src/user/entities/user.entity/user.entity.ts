@@ -39,6 +39,12 @@ role: string ;
     type=> Order,
     (order)=> order.users
 )
-orders: Order[];
+orders: Order[]; 
+
+@OneToMany(
+    type=> Order,
+    (order)=> order.tailor
+)
+retailer_orders: Order[]; 
 
 }

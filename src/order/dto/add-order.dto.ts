@@ -13,8 +13,7 @@ export class AddOrderDto {
     @IsNumber()
     budget: string  
 
-    @IsOptional()
-    image: string //for now because it will be an image api
+
 
     @IsOptional()
     @Type(()=>Number)
@@ -23,7 +22,7 @@ export class AddOrderDto {
 
     @IsOptional()
     @IsString()
-    meeting_date: string // check if it's a date ?
+    meeting_date: string
 
     @IsOptional()
     @IsString()
@@ -32,4 +31,10 @@ export class AddOrderDto {
     @IsOptional()
     @IsEnum(Status)
     status: Status
+    
+    @IsNotEmpty()
+    userId:number;
+
+    @IsNotEmpty()
+    tailorId:number;
   }

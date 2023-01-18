@@ -24,6 +24,9 @@ export class UserService {
     return await this.userRepository.find();
     }
 
+    async getUserById(id: number) :Promise<UserEntity>
+    {return await this.userRepository.findOneById(id);}
+
     async addUser(user: addUserDto) : Promise<UserEntity> {
         return await this.userRepository.save(user);
     }
@@ -97,7 +100,8 @@ export class UserService {
          };
         const jwt= await this.jwtService.sign(payload);
         return {
-            "access_token": jwt
+            "access_token": jwt,
+            user
         };
         }
          else 
