@@ -1,48 +1,48 @@
- import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Status } from 'src/enums/status.enum';
 import { UserEntity } from 'src/user/entities/user.entity/user.entity';
 import { TimeStampEntities } from 'src/Generics/Timestamp.entities';
 
 @Entity()
-export class Order extends TimeStampEntities{
+export class Order extends TimeStampEntities {
 
-    @PrimaryGeneratedColumn()
-    orderId: number;   
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    description: string 
-
-    @Column()
-    budget: string  
+  @Column()
+  description: string
 
 
-    @Column()
-    cost: string  
 
-    @Column()
-    meeting_date: string
+  @Column()
+  cost: string
 
-    @Column()
-    meeting_link: string
+  @Column()
+  meeting_date: string
 
-    @Column(
-      {type: 'enum',
-      enum: Status ,
-      default: Status.DEFAULT}
-    )
-    status: string
-    
-   @ManyToOne(
-      type => UserEntity,
-      (user) =>user.orders
-    
-    )
-    users:UserEntity; 
+  @Column()
+  meeting_link: string
 
-    @ManyToOne(
-      type => UserEntity,
-      (user) =>user.orders
-    
-    )
-    tailor:UserEntity; 
-  } 
+  @Column(
+    {
+      type: 'enum',
+      enum: Status,
+      default: Status.DEFAULT
+    }
+  )
+  status: string
+
+  @ManyToOne(
+    type => UserEntity,
+    (user) => user.orders
+
+  )
+  user: UserEntity;
+
+  @ManyToOne(
+    type => UserEntity,
+    (user) => user.orders
+
+  )
+  tailor: UserEntity;
+} 

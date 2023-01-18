@@ -38,7 +38,7 @@ export class UserEntity extends TimeStampEntities {
 
     @OneToMany(
         type => Order,
-        (order) => order.users
+        (order) => order.user
     )
     orders: Order[];
 

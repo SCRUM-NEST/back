@@ -21,12 +21,12 @@ export class OrderController {
   }
 
   
-  @Get('ordersByuser/:id') 
+  @Get('orders/user/:id') 
   async viewOrderByUsers(@Param('id',ParseIntPipe)id:number){
      return await this.orderService.viewOrderByUsers(id);}
   
 
-  @Get('ordersByTailors/:id') 
+  @Get('orders/tailor/:id') 
     async viewOrderByTailors(@Param('id',ParseIntPipe)id:number){
      return await this.orderService.viewOrderByTailors(id);
   }

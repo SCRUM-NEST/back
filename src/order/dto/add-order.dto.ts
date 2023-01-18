@@ -4,37 +4,23 @@ import { Type } from 'class-transformer';
 
 export class AddOrderDto {
 
-    @IsNotEmpty()
-    @IsString()
-    description: string 
-
-    @IsNotEmpty()
-    @Type(()=>Number)
-    @IsNumber()
-    budget: string  
+  @IsNotEmpty()
+  @IsString()
+  description: string
 
 
+  @IsOptional()
+  @IsNumber()
+  cost: string
 
-    @IsOptional()
-    @Type(()=>Number)
-    @IsNumber()
-    cost: string  
 
-    @IsOptional()
-    @IsString()
-    meeting_date: string
+  @IsOptional()
+  @IsEnum(Status)
+  status: Status
 
-    @IsOptional()
-    @IsString()
-    meeting_link: string
+  @IsNotEmpty()
+  userId: number;
 
-    @IsOptional()
-    @IsEnum(Status)
-    status: Status
-    
-    @IsNotEmpty()
-    userId:number;
-
-    @IsNotEmpty()
-    tailorId:number;
-  }
+  @IsNotEmpty()
+  tailorId: number;
+}
