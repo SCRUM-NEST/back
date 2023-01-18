@@ -11,16 +11,26 @@ import { JwtStrategy } from './strategy/passport-jwt.startegy';
 dotenv.config();
 @Module({
   imports: [TypeOrmModule.forFeature([UserEntity]),
-            PassportModule.register({
-              defaultStrategy:'jwt'
-            }),
-          JwtModule.register(
-            { secret: process.env.SECRET,
-            signOptions: {
-              expiresIn: 3600
-            } }
-          )],
+  PassportModule.register({
+    defaultStrategy: 'jwt'
+  }),
+  JwtModule.register(
+    {
+      secret: process.env.SECRET,
+      signOptions: {
+        expiresIn: 3600
+      }
+    }
+  )],
   controllers: [UserController],
-  providers: [UserService, JwtStrategy]
+  providers: [UserService, JwtStrategy],
+  exports: [JwtModule.register(
+    {
+      secret: process.env.SECRET,
+      signOptions: {
+        expiresIn: 3600
+      }
+    }
+  )]
 })
-export class UserModule {}
+export class UserModule { }
