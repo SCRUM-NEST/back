@@ -39,7 +39,7 @@ async addUser(@Body() user:addUserDto ) : Promise<UserEntity>
 
 @Patch('/updateUser/:id')
 @UseGuards(JwtAuthGuard)
-async upateUser(@Param('id',ParseIntPipe)id , number ,@Body()user: UpdateUserDto):Promise<UserEntity>{
+async upateUser(@Param('id',ParseIntPipe)id :number ,@Body()user: UpdateUserDto):Promise<UserEntity>{
     return await this.userService.updateUser(id,user);
 }
 

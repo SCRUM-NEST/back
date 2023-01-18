@@ -21,28 +21,25 @@ export class OrderController {
   }
 
   
-  @Get('orders/user/:id') 
+  @Get('user/:id') 
   async viewOrderByUsers(@Param('id',ParseIntPipe)id:number){
      return await this.orderService.viewOrderByUsers(id);}
   
 
-  @Get('orders/tailor/:id') 
+  @Get('tailor/:id') 
     async viewOrderByTailors(@Param('id',ParseIntPipe)id:number){
      return await this.orderService.viewOrderByTailors(id);
   }
 
+  @Patch('/updateOrder/:id')
 
-  
-  @Patch()
-  async updateOrder(
-    @Param() updateCriteria ,
-    @Body() order : UpdateOrderDto){
-    return await this.orderService.updateOrder(updateCriteria, order);
+  async upateOrder(@Param('id',ParseIntPipe)id: number ,@Body()order: UpdateOrderDto):Promise<Order>{
+    return await this.orderService.updateOrder(id,order);
+} 
   }
 
 
- }
-
+ 
   
   
 

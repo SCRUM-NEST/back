@@ -1,9 +1,9 @@
 import { CANCELLED } from "dns";
 
 export enum Status {
-    DEFAULT = 'Pending' ,
-    ACCEPTED = 'In process' ,
-    DECLINED = 'DECLINED',
-    DELIVERED= 'Delivered' ,
-    CANCELLED= 'Cancelled'
+    DEFAULT = 'pending' ,
+    ACCEPTED = 'accepted' ,
+    DECLINED = 'declined',
+    DELIVERED= 'delivered' ,
+    CANCELLED= 'cancelled'
 }
