@@ -1,8 +1,10 @@
- import { OneToMany, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+ import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Status } from 'src/enums/status.enum';
+import { UserEntity } from 'src/user/entities/user.entity/user.entity';
+import { TimeStampEntities } from 'src/Generics/Timestamp.entities';
 
 @Entity()
-export class Order{
+export class Order extends TimeStampEntities{
 
     @PrimaryGeneratedColumn()
     orderId: number;   
@@ -13,8 +15,6 @@ export class Order{
     @Column()
     budget: string  
 
-    @Column()
-    image: string //temporarly because it will be an image api
 
     @Column()
     cost: string  
@@ -31,4 +31,11 @@ export class Order{
       default: Status.DEFAULT}
     )
     status: string
+    
+    @ManyToOne(
+      type => UserEntity,
+      (user) =>user.orders
+    
+    )
+    users:UserEntity;
   } 

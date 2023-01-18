@@ -1,6 +1,7 @@
 import { UserRoleEnum } from "src/enums/user.role.enum";
 import { TimeStampEntities } from "src/Generics/Timestamp.entities";
-import { Column,Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Order } from "src/order/entities/order.entity";
+import { Column,Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class UserEntity extends TimeStampEntities {
@@ -25,14 +26,19 @@ password : string;
 @Column() 
 salt:string;
 @Column()
-creditCardNumber: number ; 
-@Column()
-cin:number;
+phoneNumber: number ; 
+
 @Column({
     type: 'enum', 
     enum: UserRoleEnum ,
     default: UserRoleEnum.USER
     })
 role: string ; 
+
+@OneToMany(
+    type=> Order,
+    (order)=> order.users
+)
+orders: Order[];
 
 }

@@ -1,4 +1,5 @@
 import { IsEmail, IsNotEmpty } from "class-validator";
+import { UserRoleEnum } from "src/enums/user.role.enum";
 
 export class SubscribeUserDto{
     
@@ -9,4 +10,6 @@ export class SubscribeUserDto{
     email:string;
     @IsNotEmpty()
     password:string;
+    @IsNotEmpty()
+    role:UserRoleEnum;
 }

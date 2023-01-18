@@ -73,7 +73,8 @@ export class UserService {
         id: user.id,
         username: user.username,
         email: user.password,
-        password: user.password
+        password: user.password,
+        role: user.role
         }; }
 
 
