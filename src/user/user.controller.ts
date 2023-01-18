@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGua
 import { UserRoleEnum } from 'src/enums/user.role.enum';
 import { addUserDto } from './dto/addUser.dto';
 import { LoginCredentialsDto } from './dto/loginCredentials.dto';
-import { SubscribeUserDto } from './dto/subscribe.user.dto';
+import { RegisterUserDto } from './dto/registerUser.dto';
 import { UpdateUserDto } from './dto/updateUser.dto';
 import { UserEntity } from './entities/user.entity/user.entity';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
@@ -49,7 +49,7 @@ async deleteUser(@Param('id',ParseIntPipe)id:number)
 {return await this.userService.softDeleteUser(id);}
 
 @Post('/register')
-async registerUser(@Body()userData:SubscribeUserDto):Promise<Partial<UserEntity>>
+async registerUser(@Body()userData:RegisterUserDto):Promise<Partial<UserEntity>>
 {return this.userService.register(userData);}
 
 @Post('/login')
